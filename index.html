@@ -859,8 +859,14 @@
             const passwordInput = document.getElementById('passwordInput');
             const passwordBtn = document.getElementById('passwordBtn');
 
+            // Check if already authenticated
+            if (sessionStorage.getItem('isAuthenticated') === 'true') {
+                passwordModal.style.display = 'none';
+            }
+
             function checkPassword() {
                 if(passwordInput.value === 'usdt') {
+                    sessionStorage.setItem('isAuthenticated', 'true');
                     passwordModal.style.opacity = '0';
                     setTimeout(() => {
                         passwordModal.style.display = 'none';
